@@ -1,0 +1,39 @@
+#include <iostream>
+#include <vector>
+#include <queue>
+using namespace std;
+
+vector<int> Torneo(vector<int> habilidades, int N, int K) {
+    queue<int> cola;
+    int juegosG = 0;
+    int jugador0 = habilidades[0];
+    int jugador1 = habilidades[1];
+    for (size_t i = 2; i < habilidades.size(); ++i) {
+        cola.push(habilidades[i]);
+    }
+
+    vector<int> resultado (2);
+    for (int i= 1; i <= K; ++i) {
+        if (jugador0 > jugador1) {
+            juegosG++;
+        } else {
+            juegosG = 1;
+            swap(jugador0, jugador1);
+        }
+        
+        resultado = {jugador1, jugador0};
+        cola.push(jugador1);
+
+        if (juegosG == N) {
+            cola.push(jugador0);
+            jugador0 = cola.front();
+            cola.pop();
+            juegosG = 0;
+        }
+
+        jugador1 = cola.front();
+        cola.pop();
+    }
+
+    return resultado;
+}
