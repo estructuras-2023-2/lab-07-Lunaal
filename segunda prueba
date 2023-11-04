@@ -1,0 +1,51 @@
+#include <vector>
+#include <iostream>
+#include <deque>
+#include <algorithm>
+using namespace std;
+
+vector <int> Torneo(vector<int> habilidades, int N, int K){
+    int temp=0;
+    int temp1 =0;
+    deque<int> cola;
+   
+    for (int i=2; i<habilidades.size(); i++){
+        for (int j=1; j<habilidades.size(); j++){
+            if (habilidades[i]> habilidades[j]){
+                cola.push_back(habilidades[j]);
+                cola.push_back(habilidades[i]);
+                temp = habilidades[j];
+                temp1= habilidades[i];
+                habilidades.erase(habilidades.begin());
+                habilidades.erase(habilidades.begin());
+                habilidades.push_back(habilidades[j])
+                N++;
+                if(N>K){
+                    cola.pop_back();
+                }
+            }else {
+                cola.push_back(habilidades[i]);
+                cola.push_back(habilidades[j]);
+                if(N>K){
+                    cola.pop_back();
+                }
+            }
+        }
+    }
+    cout << cola.front() << '\n';
+    cout << cola.back() << '\n';
+    return habilidades;
+}
+
+int main()
+{
+    vector <int> habilidades = {1,2,3};
+    int K=2;
+    int N=4;
+
+    Torneo(habilidades, N, K);
+   
+    cout<<"Hello World";
+
+    return 0;
+}
