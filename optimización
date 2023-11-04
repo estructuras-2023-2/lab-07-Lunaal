@@ -37,3 +37,17 @@ vector<int> Torneo(vector<int> habilidades, int N, int K) {
 
     return resultado;
 }
+void imprimirResultado(const vector<int> habilidades) {
+    cout << habilidades[0]<< "," <<habilidades[1] << endl;
+}
+
+int main()
+{
+    vector <int> habilidades = {49, 24, 26, 12, 5, 33, 25, 30, 35, 41, 46, 23, 21, 3, 38, 43, 11, 19, 34, 29, 20, 32, 39, 7, 50};
+    int N =399;
+    int K =10;
+    Torneo(habilidades,N,K);
+    imprimirResultado(habilidades);
+
+    return 0;
+}
